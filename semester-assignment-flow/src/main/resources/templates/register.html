@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="mybody">
+
+<header th:replace="fragments :: header"></header>
+
+
+<h1 class="myheader"> Register!</h1>
+
+<form method = "post" th:action="@{/register}" class ="myform" th:object="${user}">
+
+    <p> <b>Name: </b><input type="text"  class="myinput" th:field="*{name}" placeholder="John Lennon"/></p>
+    <span th:errors="*{name}" class="errors"></span>
+    <p> <b>Email: </b><input type="text"  class="myinput" th:field="*{email}" placeholder="John.Lennon@Beatles.com" /></p>
+    <span th:errors="*{email}" class="errors"></span>
+    <p> <b>Confirm Email: </b><input type="text"  class="myinput" th:field="*{email}" placeholder="John.Lennon@Beatles.com" /></p>
+    <span th:errors="*{email}" class="errors"></span>
+    <p> <b>Password: </b><input type="password"  class="myinput" th:field="*{password}" placeholder="fabfour"/></p>
+    <span th:errors="*{password}" class="errors"></span>
+    <p> <b>Confirm Password: </b><input type="password"  class="myinput" th:field="*{password}" placeholder="fabfour"/></p>
+    <span th:errors="*{password}" class="errors"></span>
+
+    <input type="submit" value="Register!" class="mybutton"/>
+</form>
+
+
+
+</body>
+</html>

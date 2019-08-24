@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="mybody">
+
+<header th:replace="fragments :: header"></header>
+
+
+<table class="mytableview">
+    <tr>
+        <td>Course Name: </td>
+        <td>Course Number: </td>
+        <td>Semester</td>
+    </tr>
+    <tr>
+        <td th:text="${classes.name}"></td>
+        <td th:text="${classes.number}"></td>
+        <td th:text="${classes.semester}"></td>
+
+
+    </tr>
+
+
+</table>
+
+</body>
+</html>

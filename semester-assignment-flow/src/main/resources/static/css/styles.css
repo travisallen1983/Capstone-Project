@@ -1,0 +1,44 @@
+.mytableview{
+margin-top:45px;
+}
+.myform{
+margin-left: 400px;
+}
+
+
+.mybody{
+
+background: rgb(150, 150, 150);
+}
+
+.mytable{
+margin:center;
+
+}
+
+.myheader{
+margin-top:200px;
+margin-left:400px;
+
+}
+
+.mybutton{
+
+background-color: white;
+border-radius: 12px;
+transition-duration: 0.4s;
+width: 590px;
+margin-left:65px;
+}
+
+.mybutton:hover {
+  background-color: black;
+  color: white;
+}
+
+.myinput{
+
+border-radius: 12px;
+ width: 60%;
+ margin:center;
+}
