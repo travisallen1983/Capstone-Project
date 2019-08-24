@@ -3,21 +3,34 @@ package org.launchcode.semesterassignmentflow.controllers;
 import org.launchcode.semesterassignmentflow.models.Assignments;
 import org.launchcode.semesterassignmentflow.models.Classes;
 import org.launchcode.semesterassignmentflow.models.User;
+import org.launchcode.semesterassignmentflow.models.data.AssignmentsDao;
+import org.launchcode.semesterassignmentflow.models.data.ClassesDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/")
 public class MainController {
+
+    @Autowired
+    ClassesDao classesDao;
+
+    @Autowired
+    AssignmentsDao assignmentsDao;
+
     @RequestMapping(value = "/")
     public String homepage(Model model) {
         model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classes", classesDao.findAll());
+        model.addAttribute("assignments", assignmentsDao.findAll());
 
 
         return "home";
@@ -42,8 +55,9 @@ public class MainController {
             return "add-class";
         }
 
+        classesDao.save(classes);
 
-        return "class-results";
+        return "redirect:";
     }
 
     @RequestMapping(value = "/addassignment", method = RequestMethod.GET)
@@ -68,9 +82,46 @@ public class MainController {
             return "add-assignment";
         }
 
+        assignmentsDao.save(assignments);
 
-        return "assignment-results";
+        return "redirect:";
 
     }
 
-}
+
+    @RequestMapping(value = "removeclass", method = RequestMethod.GET)
+    public String displayRemoveClassesForm(Model model) {
+        model.addAttribute("title", "Remove Class");
+        model.addAttribute("classes", classesDao.findAll());
+        return "remove-class";
+
+    }
+
+    @RequestMapping(value = "removeclass", method = RequestMethod.POST)
+    public String processRemoveClassesForm(@RequestParam int[] ids) {
+
+        for (int id : ids) {
+            classesDao.deleteById(id);
+        }
+        return "redirect:";
+    }
+
+        @RequestMapping(value = "removeassignment", method = RequestMethod.GET)
+        public String displayRemoveAssignmentForm (Model model){
+            model.addAttribute("title", "Remove Assignment");
+            model.addAttribute("assignments", assignmentsDao.findAll());
+            return "remove-assignments";
+
+        }
+
+        @RequestMapping(value = "removeassignment", method = RequestMethod.POST)
+        public String processRemoveAssignmentForm ( @RequestParam int[] ids){
+
+            for (int id : ids) {
+                assignmentsDao.deleteById(id);
+            }
+
+            return "redirect:";
+        }
+    }
+

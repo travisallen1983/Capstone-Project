@@ -7,10 +7,25 @@
 <header th:replace="fragments :: header"></header>
 
 
-
-<h1 class="myheader"> This will display class specific assignments</h1>
-
 <nav> <a href="/addassignment" style="color:black;"/> Add Assignments!</nav>
+
+<table class="table">
+    <tr>
+        <td>Course Name: </td>
+        <td>Assignment Type: </td>
+        <td>Details: </td>
+        <td>Due: </td>
+
+    </tr>
+    <tr th:each="assignment : ${assignments}">
+
+        <td th:text="${assignment.course}"></td>
+        <td th:text="${assignment.type}"></td>
+        <td th:text="${assignment.details}"></td>
+        <td th:text="${assignment.due}"></td>
+
+
+    </tr>
 
 
 

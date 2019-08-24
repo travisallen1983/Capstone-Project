@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
-<body>
+<head th:replace="fragments :: head"></head>
+
+<body class="mybody">
+
+<header th:replace="fragments :: header"></header>
+
+
+<form method = "post" class="myform" >
+    <div th:each = "class : ${classes}" class = "checkbox">
+        <input type = "checkbox" name = "ids" th:value="${class.id}" th:id="${class.id}" />
+        <label th:for="${class.id}" th:text="${class.name}"></label>
+        <br />
+    </div>
+    <input type ="submit" value = "Remove Class"/>
+
+</form>
 
 </body>
 </html>

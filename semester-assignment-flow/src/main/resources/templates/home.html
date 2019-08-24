@@ -6,12 +6,45 @@
 
 <header th:replace="fragments :: header"></header>
 
-<ul class="myheader" style="inline;">
+<h1 class="myheader" style="inline;"><a href="/addclass" style="color:black;"/> Add Class!</h1>
+
+<table class="table">
+    <tr>
+        <td>Course Name: </td>
+        <td>Course Number: </td>
+        <td>Semester: </td>
 
 
-<li> <a href="/addclass" style="color:black;"/> Add Class!</li>
+    </tr>
+    <tr th:each="class : ${classes}">
 
-</ul>
+        <td th:text="${class.name}"></td>
+        <td th:text="${class.number}"></td>
+        <td th:text="${class.semester}"></td>
+
+
+
+    </tr>
+</table>
+
+<table class="table">
+    <tr>
+        <td>Course Name: </td>
+        <td>Assignment Type: </td>
+        <td>Details: </td>
+        <td>Due: </td>
+
+    </tr>
+    <tr th:each="assignment : ${assignments}">
+
+        <td th:text="${assignment.course}"></td>
+        <td th:text="${assignment.type}"></td>
+        <td th:text="${assignment.details}"></td>
+        <td th:text="${assignment.due}"></td>
+
+
+    </tr>
+</table>
 
 </body>
 </html>

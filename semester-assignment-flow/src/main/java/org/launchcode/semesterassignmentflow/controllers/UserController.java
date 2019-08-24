@@ -1,6 +1,9 @@
 package org.launchcode.semesterassignmentflow.controllers;
 
+import org.launchcode.semesterassignmentflow.models.Assignments;
 import org.launchcode.semesterassignmentflow.models.User;
+import org.launchcode.semesterassignmentflow.models.data.UsersDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -12,6 +15,9 @@ import javax.validation.Valid;
 
 @Controller
 public class UserController {
+
+    @Autowired
+    UsersDao usersDao;
 
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public String displayLoginForm(Model model) {
@@ -66,8 +72,11 @@ public class UserController {
 
         }
 
-        return "register";
+        usersDao.save(user);
+
+        return "redirect:";
     }
 }
+
 
 
