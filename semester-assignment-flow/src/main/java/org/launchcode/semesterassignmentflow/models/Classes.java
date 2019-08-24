@@ -1,14 +1,16 @@
 package org.launchcode.semesterassignmentflow.models;
 
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import javax.validation.constraints.Size;
+import java.util.List;
 
-//@Entity
+@Entity
 public class Classes {
-    //@Id
-    //@GeneratedValue
+    @Id
+    @GeneratedValue
 
     private int id;
 
@@ -18,7 +20,11 @@ public class Classes {
     private String number;
     private String semester;
 
+    @ManyToOne
+    public User user;
 
+    //@ManyToMany
+    //private List<Assignments> assignments;
 
    public Classes(){}
 
