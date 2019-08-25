@@ -9,8 +9,8 @@
 
 <form method = "post" class="myform" >
     <div th:each = "class : ${classes}" class = "checkbox">
-        <input type = "checkbox" name = "ids" th:value="${class.id}" th:id="${class.id}" />
-        <label th:for="${class.id}" th:text="${class.name}"></label>
+        <input type = "checkbox" name = "ids" th:value="${class.classId}" th:id="${class.classId}" />
+        <label th:for="${class.classId}" th:text="${class.name}"></label>
         <br />
     </div>
     <input type ="submit" value = "Remove Class"/>

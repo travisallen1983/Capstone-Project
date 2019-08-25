@@ -7,9 +7,11 @@
 <header th:replace="fragments :: header"></header>
 
 
-<h1 class="myheader">Add an Assignment!</h1>
 
-<form method = "post" th:action="@{/addassignment}"class ="myform" th:object="${assignments}">
+
+<form method = "post" th:action="@{/assignments/add}"class ="myform" th:object="${assignments}">
+
+    <h1>Add an Assignment!</h1>
 
     <p> <b>Course Number: </b><input type="text"  class="myinput" th:field="*{course}" placeholder=" i.e. HIS 101"/></p>
     <span th:errors="*{course}" class="errors"></span>

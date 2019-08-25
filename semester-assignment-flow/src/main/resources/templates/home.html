@@ -6,45 +6,37 @@
 
 <header th:replace="fragments :: header"></header>
 
-<h1 class="myheader" style="inline;"><a href="/addclass" style="color:black;"/> Add Class!</h1>
-
-<table class="table">
-    <tr>
-        <td>Course Name: </td>
-        <td>Course Number: </td>
-        <td>Semester: </td>
+<h1>All Assignments.</h1>
 
 
-    </tr>
-    <tr th:each="class : ${classes}">
-
-        <td th:text="${class.name}"></td>
-        <td th:text="${class.number}"></td>
-        <td th:text="${class.semester}"></td>
+<div class= "coursetable">
+<table th:each="class: ${classes}" >
 
 
-
-    </tr>
 </table>
-
-<table class="table">
+<table th:each="assignment: ${assignments}">
     <tr>
-        <td>Course Name: </td>
-        <td>Assignment Type: </td>
-        <td>Details: </td>
-        <td>Due: </td>
+        <td style="color:red;"> Class: </td>
+        <td th:text="${assignment.course}"> </td>
+        <td></td>
+        <td></td>
+        <td style="color:red;"> Type: </td>
+        <td th:text="${assignment.type}"> </td>
+        <td></td>
+        <td></td>
+        <td style="color:red;"> Details: </td>
+        <td th:text="${assignment.details}"> </td>
+        <td></td>
+        <td></td>
+        <td style="color:red;"> Due Date: </td>
+        <td th:text="${assignment.due}"> </td>
+        </br>
 
     </tr>
-    <tr th:each="assignment : ${assignments}">
-
-        <td th:text="${assignment.course}"></td>
-        <td th:text="${assignment.type}"></td>
-        <td th:text="${assignment.details}"></td>
-        <td th:text="${assignment.due}"></td>
 
 
-    </tr>
+
 </table>
-
+</div>
 </body>
 </html>

@@ -7,10 +7,9 @@
 <header th:replace="fragments :: header"></header>
 
 
-<h1 class="myheader"> Add a Class!</h1>
 
-<form method = "post" th:action="@{/addclass}" class ="myform" th:object="${classes}">
-
+<form method = "post" th:action="@{/class/add}" class ="myform" th:object="${classes}">
+    <h1 > Add a Class!</h1>
     <p> <b>Class Name: </b><input type="text"  class="myinput" th:field="*{name}" placeholder=" i.e. History 101"/></p>
     <span th:errors="*{name}" class="errors"></span>
     <p> <b>Class Number: </b><input type="text"  class="myinput" th:field="*{number}" placeholder=" i.e. HIS 101" /></p>

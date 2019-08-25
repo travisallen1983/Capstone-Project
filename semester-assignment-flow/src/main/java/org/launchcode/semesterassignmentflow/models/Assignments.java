@@ -1,9 +1,6 @@
 package org.launchcode.semesterassignmentflow.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -11,14 +8,14 @@ public class Assignments {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int assignmentId;
     private String type;
     private String details;
     private String course;
     private String due;
 
-    //@ManyToMany(mappedBy = "classes")
-    //private List<Classes> classes;
+    @ManyToOne
+    public Classes classes;
 
     public Assignments(){}
 
@@ -30,8 +27,8 @@ public class Assignments {
 
     }
 
-    public int getId() {
-        return id;
+    public int getAssignmentId() {
+        return assignmentId;
     }
 
     public String getType() {

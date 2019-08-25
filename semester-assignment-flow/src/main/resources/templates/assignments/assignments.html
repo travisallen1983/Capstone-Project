@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="mybody">
+
+<header th:replace="fragments :: header"></header>
+
+
+<nav> <a href="/assignment/add" style="color:black;"/> Add Assignments!</nav>
+<div class="displaytext">
+    <table class="table">
+        <tr>
+            <td>Course Name: </td>
+            <td>Assignment Type: </td>
+            <td>Details: </td>
+            <td>Due: </td>
+
+        </tr>
+        <tr th:each="assignments : ${assignments}">
+
+            <td th:text="${assignment.course}"></td>
+            <td th:text="${assignment.type}"></td>
+            <td th:text="${assignment.details}"></td>
+            <td th:text="${assignment.due}"></td>
+
+
+        </tr>
+
+    </table>
+</div>
+
+
+
+</body>
+</html>

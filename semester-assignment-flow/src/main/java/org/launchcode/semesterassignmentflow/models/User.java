@@ -1,9 +1,6 @@
 package org.launchcode.semesterassignmentflow.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +8,13 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-    private int id;
+    private int userId;
     private String name;
     private String email;
     private String password;
 
    @OneToMany
+   @JoinColumn
    public List<Classes> classes = new ArrayList<>();
 
     public User(){
@@ -26,6 +24,10 @@ public class User {
         this.name = name;
         this.email =email;
         this.password = password;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 
     public String getName() {
@@ -52,9 +54,5 @@ public class User {
         this.password = password;
     }
 
-    public User(int id) {
-        this.id = id;
-
-
     }
-}
+

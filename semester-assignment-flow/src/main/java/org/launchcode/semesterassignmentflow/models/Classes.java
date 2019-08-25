@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,7 @@ public class Classes {
     @Id
     @GeneratedValue
 
-    private int id;
+    private int classId;
 
     @NotNull
     @Size(min=3, max=15 )
@@ -23,8 +24,9 @@ public class Classes {
     @ManyToOne
     public User user;
 
-    //@ManyToMany
-    //private List<Assignments> assignments;
+    @OneToMany
+    @JoinColumn
+    private List<Assignments> assignments = new ArrayList<>();
 
    public Classes(){}
 
@@ -34,8 +36,8 @@ public class Classes {
         this.number = number;
     }
 
-    public int getId() {
-        return id;
+    public int getClassId() {
+        return classId;
     }
 
     public String getName() {
