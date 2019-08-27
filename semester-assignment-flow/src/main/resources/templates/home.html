@@ -16,20 +16,22 @@
 </table>
 <table th:each="assignment: ${assignments}">
     <tr>
-        <td style="color:red;"> Class: </td>
+        <span style="color:white;">---------------------------------------------------------------------------------</span>
+        <td style="color:blue;"> Class: </td>
         <td th:text="${assignment.course}"> </td>
         <td></td>
         <td></td>
-        <td style="color:red;"> Type: </td>
+        <td style="color:blue;"> Type: </td>
         <td th:text="${assignment.type}"> </td>
         <td></td>
         <td></td>
-        <td style="color:red;"> Details: </td>
+        <td style="color:blue;"> Details: </td>
         <td th:text="${assignment.details}"> </td>
         <td></td>
         <td></td>
-        <td style="color:red;"> Due Date: </td>
+        <td style="color:blue; "> Due Date: </td>
         <td th:text="${assignment.due}"> </td>
+        <span style="color:white;">---------------------------------------------------------------------------------</span>
         </br>
 
     </tr>
@@ -38,5 +40,11 @@
 
 </table>
 </div>
+
+<footer th:replace="fragments :: footer">
+
+
+</footer>
+
 </body>
 </html>

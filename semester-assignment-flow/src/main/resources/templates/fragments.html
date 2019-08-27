@@ -5,8 +5,8 @@
     <title th:text="${title}"></title>
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
 
 
 </head>
@@ -15,34 +15,43 @@
 
     <div class="topnav">
 
-        <div>
+                <div class="dropdown">
+                <button class="dropbtn"> FALL 2019
+                </button>
+                <div class="dropdown-content">
+                    <a th:href="@{/}">Home</a>
+                    <a th:href="@{/class/add}">Add Class</a>
+                    <a th:href="@{/assignments/add}">Add Assignment</a>
+                </div>
 
-        <a href="#" th:href="@{/}" >||Fall 2019||</a>
-
-        </div>
-
-        <div>
         <a href="#" th:href="@{/class/class.classId}" >   HIS 401    </a>
         <a href="#" th:href="@{/class/class.classId}">    HIS 411    </a>
         <a href="#" th:href="@{/class/class.classId}">    HIS 473   </a>
         <a href="#" th:href="@{/class/class.classId}">    LIS 431    </a>
         <a href="#" th:href="@{/class/class.classId}">    UNI 301    </a>
-        </div>
-        <div style="float:right;">
-            <a th:href="${register}"> Register </a>
-            <a th:href="${signin}"> Sign In </a>
-            <a th:href="${logout}"> Logout </a>
+
+
+        <a th:href="@{/logout}" class="userfloat"> Logout </a>
+        <a th:href="@{/signin}" class="userfloat"> Sign In </a>
+        <a th:href="@{/register}" class="userfloat"> Register </a>
+
+
+
+
 
         </div>
 
-
-
-
         </div>
+    </div>
 </header>
 <body>
 
+
 </body>
+
+<footer th:fragment="footer">
+
+</footer>
 
 
 
