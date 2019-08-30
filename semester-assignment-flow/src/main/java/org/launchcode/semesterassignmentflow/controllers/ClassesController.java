@@ -81,4 +81,13 @@ public class ClassesController {
 
         return "/classes/classes";
     }
+
+    @GetMapping(value= "/HIS401")
+    public String history401(Model model) {
+        model.addAttribute("title", "History 401");
+        model.addAttribute("assignments", assignmentsDao.findAll());
+
+
+        return "/classes/classes";
+    }
 }

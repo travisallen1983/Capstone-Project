@@ -7,24 +7,64 @@
 <header th:replace="fragments :: header"></header>
 
 
-<nav> <a href="/assignment/add" style="color:black;"/> Add Assignments!</nav>
 <div>
-<table class="table">
+<table class="table"  style="color:white;" >
     <tr>
-        <td>Class Name: </td>
-        <td>Course Number: </td>
-        <td>Semester: </td>
+        <td style="font-size: 20px; "><u>HIS 401</u></td>
 
     </tr>
-    <tr th:each="class : ${classes}">
+    <tr th:if="${assignment.course} == 'HIS 401'"  th:each="assignment : ${assignments}">
 
-        <td th:text="${class.name}"></td>
-        <td th:text="${class.number}"></td>
-        <td th:text="${class.semester}"></td>
+        <td th:text="${assignment.type}"></td>
+        <td th:text="${assignment.details}"></td>
+        <td th:text="${assignment.due}"></td>
+    </tr>
 
-
+    <tr>
+        <td style="font-size: 20px;"><u>HIS 411</u></td>
 
     </tr>
+    <tr th:if="${assignment.course} == 'HIS 411'" th:each="assignment : ${assignments}">
+
+        <td  th:text="${assignment.type}"></td>
+        <td   th:text="${assignment.details}"></td>
+        <td  th:text="${assignment.due}"></td>
+
+    </tr>
+
+    <tr>
+        <td style="font-size: 20px;"><u>HIS 473</u></td>
+
+    </tr>
+    <tr th:if="${assignment.course} == 'HIS 473'"  th:each="assignment : ${assignments}">
+
+        <td  th:text="${assignment.type}"></td>
+        <td   th:text="${assignment.details}"></td>
+        <td  th:text="${assignment.due}"></td>
+    </tr>
+
+    <tr>
+        <td style="font-size: 20px;"><u>LIS 431</u></td>
+
+    </tr>
+    <tr th:if="${assignment.course} == 'LIS 431'"  th:each="assignment : ${assignments}">
+
+        <td  th:text="${assignment.type}"></td>
+        <td   th:text="${assignment.details}"></td>
+        <td  th:text="${assignment.due}"></td>
+    </tr>
+    <tr>
+        <td style="font-size: 20px;"><u>UNI 301</u></td>
+
+    </tr>
+    <tr th:if="${assignment.course} == 'UNI 301'"  th:each="assignment : ${assignments}">
+
+        <td  th:text="${assignment.type}"></td>
+        <td   th:text="${assignment.details}"></td>
+        <td  th:text="${assignment.due}"></td>
+    </tr>
+
+
 
 </table>
 </div>

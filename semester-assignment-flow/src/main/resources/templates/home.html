@@ -31,6 +31,10 @@
         <td></td>
         <td style="color:blue; "> Due Date: </td>
         <td th:text="${assignment.due}"> </td>
+        <td><select> <option th:href="@{/assignments/complete}">Complete</option>
+        <option th:href="@{/assignments/remove}">Remove</option>
+        <option th:href="@{/assignments/edit}">Edit</option>
+        </select></td>
         <span style="color:white;">---------------------------------------------------------------------------------</span>
         </br>
 

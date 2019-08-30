@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="mybody">
+
+<header th:replace="fragments :: header"></header>
+
+
+
+<form method = "post" th:action="@{/assignments/edit}"class ="myform" th:object="${assignments}">
+
+    <h1>Edit an Assignment!</h1>
+
+    <p> <b>Course Number: </b><input type="text"  class="myinput" th:field="*{course}" /></p>
+    <span th:errors="*{course}" class="errors"></span>
+
+    <p> <b>Assignment Type:</b> <select class="myinput" th:field="*{type}">
+        <option value="Pick One">Pick One</option>
+        <option value="Weekly Assignment">Weekly Assignment</option>
+        <option value="Quiz">Quiz</option>
+        <option value="Test">Test</option>
+        <option value="Paper">Paper</option>
+    </select></p>
+    <span th:errors="*{type}" class="errors"></span>
+
+    <p> <b>Details: </b><input type="text"  class="myinput" th:field="*{details}" /></p>
+    <span th:errors="*{details}" class="errors"></span>
+
+    <p> <b> Due Date:</b> <input type="text"  class="myinput" th:field="*{due}" /></p>
+    <span th:errors="*{due}" class="errors"></span>
+
+
+
+    <input type="submit" value="Edit Assignment" class="mybutton"/>
+
+
+</form>
+</body>
+</html>
