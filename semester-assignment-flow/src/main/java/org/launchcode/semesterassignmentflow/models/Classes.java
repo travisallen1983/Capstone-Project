@@ -14,26 +14,30 @@ public class Classes {
     @GeneratedValue
 
     private int classId;
+    private static int nextId = 1;
 
     @NotNull
     @Size(min=3, max=15 )
     private String name;
-    private String number;
+    private String description;
     private String semester;
 
     @ManyToOne
     public User user;
 
     @OneToMany
-    @JoinColumn
+    @JoinColumn(name= "classes_id")
     private List<Assignments> assignments = new ArrayList<>();
 
-   public Classes(){}
+   public Classes(){
+       classId = nextId;
+       nextId++;
+   }
 
-   public Classes(String name, String semester, String number){
+   public Classes(String name, String semester, String description){
         this.name = name;
         this.semester = semester;
-        this.number = number;
+        this.description = description;
     }
 
     public int getClassId() {
@@ -56,11 +60,19 @@ public class Classes {
         this.semester = semester;
     }
 
-    public String getNumber() {
-        return number;
+    public String getDescription() {
+        return description;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Assignments> getAssignments() {
+        return assignments;
+    }
+
+    public void setAssignments(List<Assignments> assignments) {
+        this.assignments = assignments;
     }
 }

@@ -1,7 +1,5 @@
 package org.launchcode.semesterassignmentflow.controllers;
 
-import org.launchcode.semesterassignmentflow.models.Assignments;
-import org.launchcode.semesterassignmentflow.models.Classes;
 import org.launchcode.semesterassignmentflow.models.User;
 import org.launchcode.semesterassignmentflow.models.data.AssignmentsDao;
 import org.launchcode.semesterassignmentflow.models.data.ClassesDao;
@@ -95,6 +93,27 @@ public class MainController {
 
         return "redirect:";
     }
+
+    @GetMapping(value = "/semester")
+    public String displaySemesterForm(Model model) {
+        model.addAttribute("title", "Fall 2019");
+        model.addAttribute("user", new User());
+
+
+        return "/users/semester";
+
+    }
+
+
+
+    @PostMapping(value = "/semester")
+    public String processSemesterForm(@ModelAttribute @Valid User user, Model model) {
+
+        usersDao.save(user);
+        return "redirect:";
+    }
+
+
 
     }
 

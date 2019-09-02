@@ -9,6 +9,7 @@ public class Assignments {
     @Id
     @GeneratedValue
     private int assignmentId;
+    private static int nextId = 1;
     private String type;
     private String details;
     private String course;
@@ -17,12 +18,15 @@ public class Assignments {
     @ManyToOne
     public Classes classes;
 
-    public Assignments(){}
+    public Assignments(){
+        assignmentId = nextId;
+        nextId++;
+    }
 
     public Assignments(String course, String type, String details, String due){
         this.type = type;
-        this.type = due;
-        this.type = course;
+        this.due = due;
+        this.course= course;
         this.details = details;
 
     }

@@ -8,62 +8,17 @@
 
 
 <div>
-<table class="table"  style="color:white;" >
-    <tr>
-        <td style="font-size: 20px; "><u>HIS 401</u></td>
+<table class="table"  style="color:white;" th:object="${classes}">
+    <tr th:each="assignment : ${assignments}">
+        <td style="font-size: 20px; "><u th:text="${assignment.course}"></u></td>
 
     </tr>
-    <tr th:if="${assignment.course} == 'HIS 401'"  th:each="assignment : ${assignments}">
+    <tr  th:each="assignment : ${assignments}">
 
         <td th:text="${assignment.type}"></td>
         <td th:text="${assignment.details}"></td>
         <td th:text="${assignment.due}"></td>
     </tr>
-
-    <tr>
-        <td style="font-size: 20px;"><u>HIS 411</u></td>
-
-    </tr>
-    <tr th:if="${assignment.course} == 'HIS 411'" th:each="assignment : ${assignments}">
-
-        <td  th:text="${assignment.type}"></td>
-        <td   th:text="${assignment.details}"></td>
-        <td  th:text="${assignment.due}"></td>
-
-    </tr>
-
-    <tr>
-        <td style="font-size: 20px;"><u>HIS 473</u></td>
-
-    </tr>
-    <tr th:if="${assignment.course} == 'HIS 473'"  th:each="assignment : ${assignments}">
-
-        <td  th:text="${assignment.type}"></td>
-        <td   th:text="${assignment.details}"></td>
-        <td  th:text="${assignment.due}"></td>
-    </tr>
-
-    <tr>
-        <td style="font-size: 20px;"><u>LIS 431</u></td>
-
-    </tr>
-    <tr th:if="${assignment.course} == 'LIS 431'"  th:each="assignment : ${assignments}">
-
-        <td  th:text="${assignment.type}"></td>
-        <td   th:text="${assignment.details}"></td>
-        <td  th:text="${assignment.due}"></td>
-    </tr>
-    <tr>
-        <td style="font-size: 20px;"><u>UNI 301</u></td>
-
-    </tr>
-    <tr th:if="${assignment.course} == 'UNI 301'"  th:each="assignment : ${assignments}">
-
-        <td  th:text="${assignment.type}"></td>
-        <td   th:text="${assignment.details}"></td>
-        <td  th:text="${assignment.due}"></td>
-    </tr>
-
 
 
 </table>

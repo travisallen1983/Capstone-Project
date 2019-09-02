@@ -16,18 +16,19 @@
     <div class="topnav">
 
                 <div class="dropdown">
-                <button onclick="myFunction()"  class="dropbtn" > FALL 2019
+                <button onclick="myFunction()" class="dropbtn" th:text="${title}"> Semester
                 </button>
                 <div id="myDropdown" class="dropdown-content">
                     <a th:href="@{/}">Home</a>
                     <a th:href="@{/class/add}">Add Class</a>
                     <a th:href="@{/assignments/add}">Add Assignment</a>
+                    <a th:href="@{/semester}">Set Semester</a>
                     <a th:href="@{/logout}" > Logout </a>
                     <a th:href="@{/signin}" > Sign In </a>
                     <a th:href="@{/register}"> Register </a>
                 </div >
                     <ul th:each="class : ${classes}" style="display:inline-block; list-style:none">
-                        <li> <a href="#" th:href="@{${'/class/' + class.name}}" th:text="${class.name}" >  </a></li>
+                        <li> <a href="#" th:href="@{${'/class/' + class.classId}}" th:text="${class.name}" >  </a></li>
                     </ul>
 
                 </div>

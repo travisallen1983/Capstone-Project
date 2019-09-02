@@ -1,5 +1,6 @@
 package org.launchcode.semesterassignmentflow.controllers;
 
+import org.launchcode.semesterassignmentflow.models.Assignments;
 import org.launchcode.semesterassignmentflow.models.Classes;
 import org.launchcode.semesterassignmentflow.models.data.AssignmentsDao;
 import org.launchcode.semesterassignmentflow.models.data.ClassesDao;
@@ -10,6 +11,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/class")
@@ -74,20 +76,32 @@ public class ClassesController {
 
 
     @RequestMapping(value = "/{classId}")
-    public String class1(Model model, @PathVariable int classId) {
-        model.addAttribute("title", "{classId}");
-        model.addAttribute("assignments", assignmentsDao.findAll());
+    public String newclass(Model model, @PathVariable int classId) {
+
+        Classes classes = classesDao.findOne(classId);
+        List<Assignments> assignments = classes.getAssignments();
+        model.addAttribute("title", "Fall 2019");
+        model.addAttribute("assignments", assignments);
+
 
 
         return "/classes/classes";
     }
 
-    @GetMapping(value= "/HIS401")
-    public String history401(Model model) {
-        model.addAttribute("title", "History 401");
-        model.addAttribute("assignments", assignmentsDao.findAll());
 
 
-        return "/classes/classes";
+    @GetMapping(value = "edit/{classId}")
+    public String displayEditForm(Model model, @PathVariable int classId, @ModelAttribute Classes classes) {
+
+        model.addAttribute("class", new Classes());
+        model.addAttribute("title", "Edit Cheese " + classes.getName() + " (id=" + classes.getClassId() + ")");
+        return "classes/edit";
+    }
+
+    @PostMapping(value = "edit/{classId}")
+    public String processEditForm(@ModelAttribute @Valid Classes classes, Model model) {
+
+
+        return "redirect:/cheese";
     }
 }

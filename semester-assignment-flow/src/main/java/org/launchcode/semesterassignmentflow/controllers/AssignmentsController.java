@@ -71,5 +71,19 @@ public class AssignmentsController {
         return  "redirect:/";
     }
 
+    @GetMapping(value = "edit/{assignmentId}")
+    public String displayEditForm(Model model, @PathVariable int assignmentId, @ModelAttribute Assignments assignments) {
 
+        model.addAttribute("class", new Assignments());
+        model.addAttribute("title", "Edit Assignment " + assignments.getDetails() + " (id=" + assignments.getAssignmentId() + ")");
+        return "assignments/edit";
+    }
+
+    @PostMapping(value = "edit/{assignmentId}")
+    public String processEditForm(@ModelAttribute @Valid Assignments assignments, Model model) {
+
+
+        return "redirect:";
+    }
 }
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="mybody">
+
+<header th:replace="fragments :: header"></header>
+
+
+
+
+<form method = "post" th:action="@{/Semester}" class ="myform" th:object="${user}">
+    <h1 > Register!</h1>
+
+    <p> <b>Name: </b><input type="text"  class="myinput" th:field="*{semester}" placeholder="Fall 2019"/></p>
+
+
+    <input type="submit" value="Set Semester!" class="mybutton"/>
+</form>
+
+
+
+</body>
+</html>

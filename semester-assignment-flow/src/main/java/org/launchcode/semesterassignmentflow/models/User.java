@@ -9,15 +9,19 @@ public class User {
     @Id
     @GeneratedValue
     private int userId;
+    private static int nextId = 1;
     private String name;
     private String email;
     private String password;
+    private String semester;
 
    @OneToMany
-   @JoinColumn
+   @JoinColumn(name= "user_id")
    public List<Classes> classes = new ArrayList<>();
 
     public User(){
+        userId = nextId;
+        nextId++;
     }
 
     public User(String name, String email, String password){
@@ -54,5 +58,12 @@ public class User {
         this.password = password;
     }
 
+    public String getSemester() {
+        return semester;
     }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+}
 
