@@ -26,11 +26,17 @@ public class MainController {
     UsersDao usersDao;
 
     @GetMapping(value = "/")
-    public String homepage(Model model) {
+    public String homepage(Model model, @ModelAttribute User user) {
         model.addAttribute("title", "Fall 2019");
+        //user.getSemester()
         model.addAttribute("classes", classesDao.findAll());
         model.addAttribute("assignments", assignmentsDao.findAll());
 
+            //, @RequestParam int[] ids
+            //for (int id : ids) {
+            //    assignmentsDao.deleteById(id);
+            //}
+           //return  "redirect:/";
 
         return "home";
     }

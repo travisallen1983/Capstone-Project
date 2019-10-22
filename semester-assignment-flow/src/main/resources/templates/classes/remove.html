@@ -6,7 +6,7 @@
 
 <header th:replace="fragments :: header"></header>
 
-
+<h1 th:text="${classname}"></h1>
 <form method = "post" class="myform" >
     <div th:each = "class : ${classes}" class = "checkbox">
         <input type = "checkbox" name = "ids" th:value="${class.classId}" th:id="${class.classId}" />

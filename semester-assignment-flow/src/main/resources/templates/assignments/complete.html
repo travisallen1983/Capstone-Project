@@ -7,15 +7,6 @@
 <header th:replace="fragments :: header"></header>
 
 
-<form method = "post" th:action="@{/assignments/complete}" class="myform" >
-    <div th:each = "assignment : ${assignments}" class = "checkbox">
-        <input type = "checkbox"  name = "ids" th:value="${assignment.assignmentId}" th:id="${assignment.assignmentId}" />
-        <label th:for="${assignment.assignmentId}" th:text="${assignment.details + '(' + assignment.course} + ')'"></label>
-        <br />
-    </div>
-    <input type ="submit" value = "Complete Assignment"/>
-
-</form>
 
 </body>
 </html>

@@ -55,7 +55,8 @@ public class AssignmentsController {
 
     @GetMapping(value = "remove")
     public String displayRemoveAssignmentForm (Model model){
-        model.addAttribute("title", "Remove Assignment");
+        model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classname","Remove Assignment");
         model.addAttribute("assignments", assignmentsDao.findAll());
         return "/assignments/remove";
 
@@ -85,5 +86,16 @@ public class AssignmentsController {
 
         return "redirect:";
     }
+
+    @GetMapping(value = "complete")
+    public String displayCompletePage(Model model) {
+
+        model.addAttribute("title", "Fall 2019");
+        return "assignments/complete";
+    }
+
+
+
+
 }
 

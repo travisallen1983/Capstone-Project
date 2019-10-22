@@ -31,10 +31,16 @@
         <td></td>
         <td style="color:blue; "> Due Date: </td>
         <td th:text="${assignment.due}"> </td>
-        <td><select> <option th:href="@{/assignments/complete}">Complete</option>
-        <option th:href="@{/assignments/remove}">Remove</option>
-        <option th:href="@{/assignments/edit}">Edit</option>
-        </select></td>
+        <td>
+           <!-- <form method = "post" class="myform" th:each = "assignment : ${assignments}" >
+                    <input name = "ids" type="submit" value = "Remove" th:id="${assignment.assignmentId}"/>
+
+            </form>-->
+            <button><a th:href="@{/assignments/remove}">Remove</a></button>
+            <button><a th:href="@{/assignments/complete}">Complete</a></button>
+            <button><a th:href="@{/assignments/edit}">Edit</a></button>
+
+        </td>
         <span style="color:white;">---------------------------------------------------------------------------------</span>
         </br>
 

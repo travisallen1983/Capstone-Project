@@ -6,25 +6,51 @@
 
 <header th:replace="fragments :: header"></header>
 
-
-<div>
-<table class="table"  style="color:white;" th:object="${classes}">
-    <tr th:each="assignment : ${assignments}">
-        <td style="font-size: 20px; "><u th:text="${assignment.course}"></u></td>
-
-    </tr>
-    <tr  th:each="assignment : ${assignments}">
-
-        <td th:text="${assignment.type}"></td>
-        <td th:text="${assignment.details}"></td>
-        <td th:text="${assignment.due}"></td>
-    </tr>
+<h1 th:text="${classname}"></h1>
 
 
-</table>
+<div class= "coursetable" >
+
+    <table >
+        <tr th:each="assignment: ${assignments}">
+            <span th:if = "${classname == assignment.course}">
+            <span style="color:white;">---------------------------------------------------------------------------------</span>
+            <td style="color:blue;"> Class: </td>
+            <td th:text="${assignment.course}"> </td>
+            <td></td>
+            <td></td>
+            <td style="color:blue;"> Type: </td>
+            <td th:text="${assignment.type}"> </td>
+            <td></td>
+            <td></td>
+            <td style="color:blue;"> Details: </td>
+            <td th:text="${assignment.details}"> </td>
+            <td></td>
+            <td></td>
+            <td style="color:blue; "> Due Date: </td>
+            <td th:text="${assignment.due}"> </td>
+            <td>
+
+                <button><a th:href="@{/assignments/complete}">Complete</a></button>
+                <button><a th:href="@{/assignments/remove}">Remove</a></button>
+                <button><a th:href="@{/assignments/edit}">Edit</a></button>
+
+            </td>
+            <span style="color:white;">---------------------------------------------------------------------------------</span>
+            </span>
+            </br>
+
+        </tr>
+
+
+
+    </table>
 </div>
 
+<footer th:replace="fragments :: footer">
 
+
+</footer>
 
 </body>
 </html>

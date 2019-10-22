@@ -2,8 +2,10 @@ package org.launchcode.semesterassignmentflow.controllers;
 
 import org.launchcode.semesterassignmentflow.models.Assignments;
 import org.launchcode.semesterassignmentflow.models.Classes;
+import org.launchcode.semesterassignmentflow.models.User;
 import org.launchcode.semesterassignmentflow.models.data.AssignmentsDao;
 import org.launchcode.semesterassignmentflow.models.data.ClassesDao;
+import org.launchcode.semesterassignmentflow.models.data.UsersDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +25,16 @@ public class ClassesController {
     @Autowired
     ClassesDao classesDao;
 
+    @Autowired
+    UsersDao usersDao;
 
     @GetMapping(value = "/")
     public String displayAddClasses(Model model) {
-        model.addAttribute("title", "Fall 2019");
+
 
         return "/classes/classes";
     }
+
 
 
     @GetMapping(value = "/add")
@@ -59,7 +64,8 @@ public class ClassesController {
 
     @GetMapping(value = "/remove")
     public String displayRemoveClassesForm(Model model) {
-        model.addAttribute("title", "Remove Class");
+        model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classname", "Remove Class");
         model.addAttribute("classes", classesDao.findAll());
         return "/classes/remove";
 
@@ -80,8 +86,9 @@ public class ClassesController {
 
         Classes classes = classesDao.findOne(classId);
         List<Assignments> assignments = classes.getAssignments();
+        model.addAttribute("classname", classes.getName());
         model.addAttribute("title", "Fall 2019");
-        model.addAttribute("assignments", assignments);
+        model.addAttribute("assignments", assignmentsDao.findAll());
 
 
 

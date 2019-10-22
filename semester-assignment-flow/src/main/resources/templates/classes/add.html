@@ -10,7 +10,7 @@
 
 <form method = "post" th:action="@{/class/add}" class ="myform" th:object="${classes}">
     <h1 > Add a Class!</h1>
-    <p> <b>Class Name: </b><input type="text"  class="myinput" th:field="*{name}" placeholder=" i.e. History 101"/></p>
+    <p> <b>Class: </b><input type="text"  class="myinput" th:field="*{name}" placeholder=" i.e. History 101"/></p>
     <span th:errors="*{name}" class="errors"></span>
     <p> <b>Class Description: </b><input type="text"  class="myinput" th:field="*{description}" placeholder=" i.e. Intro to History" /></p>
     <span th:errors="*{description}" class="errors"></span>

@@ -13,7 +13,7 @@
 
     <h1>Add an Assignment!</h1>
 
-    <p> <b>Course Number: </b><input type="text"  class="myinput" th:field="*{course}" placeholder=" i.e. HIS 101"/></p>
+    <p> <b>Class: </b><input type="text"  class="myinput" th:field="*{course}" placeholder=" i.e. History 101"/></p>
     <span th:errors="*{course}" class="errors"></span>
 
     <p> <b>Assignment Type:</b> <select class="myinput" th:field="*{type}">
