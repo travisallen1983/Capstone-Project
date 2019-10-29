@@ -1,8 +1,7 @@
 package org.launchcode.semesterassignmentflow.controllers;
-
-import javafx.scene.shape.Path;
 import org.launchcode.semesterassignmentflow.models.Assignments;
 import org.launchcode.semesterassignmentflow.models.data.AssignmentsDao;
+import org.launchcode.semesterassignmentflow.models.data.ClassesDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +17,12 @@ public class AssignmentsController {
     @Autowired
     AssignmentsDao assignmentsDao;
 
+    @Autowired
+    ClassesDao classesDao;
+
     @GetMapping(value = "/")
     public String displayAddAssignments(Model model) {
+        model.addAttribute("classes", classesDao.findAll());
         model.addAttribute("title", "Fall 2019");
 
         return "/assignments/assignments";
@@ -28,6 +31,7 @@ public class AssignmentsController {
     @GetMapping(value = "/add")
     public String displayAddAssignmentForm(Model model) {
         model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classes", classesDao.findAll());
         model.addAttribute("assignments", new Assignments());
 
 
@@ -38,9 +42,11 @@ public class AssignmentsController {
     @PostMapping(value = "/add")
     public String processAddAssignmentForm(@ModelAttribute @Valid Assignments assignments, Model model, Errors errors) {
         model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classes", classesDao.findAll());
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Fall 2019");
+            model.addAttribute("classes", classesDao.findAll());
             model.addAttribute("assignments", new Assignments());
 
 
@@ -53,34 +59,19 @@ public class AssignmentsController {
 
     }
 
-    @GetMapping(value = "remove")
-    public String displayRemoveAssignmentForm (Model model){
-        model.addAttribute("title", "Fall 2019");
-        model.addAttribute("classname","Remove Assignment");
-        model.addAttribute("assignments", assignmentsDao.findAll());
-        return "/assignments/remove";
 
-    }
+    @GetMapping(value = "/{assignmentId}")
+    public String displayEditForm(Model model,  @PathVariable int assignmentId) {
 
-    @PostMapping(value = "remove")
-    public String processRemoveAssignmentForm ( @RequestParam int[] ids){
-
-        for (int id : ids) {
-            assignmentsDao.deleteById(id);
-        }
-
-        return  "redirect:/";
-    }
-
-    @GetMapping(value = "edit/{assignmentId}")
-    public String displayEditForm(Model model, @PathVariable int assignmentId, @ModelAttribute Assignments assignments) {
-
+        Assignments assignments = assignmentsDao.findOne(assignmentId);
         model.addAttribute("class", new Assignments());
-        model.addAttribute("title", "Edit Assignment " + assignments.getDetails() + " (id=" + assignments.getAssignmentId() + ")");
+        model.addAttribute("classes", classesDao.findAll());
+        model.addAttribute("title", "Fall 2019");
+        // Edit Assignment " + assignments.getDetails() + " (id=" + assignments.getAssignmentId() + ")")
         return "assignments/edit";
     }
 
-    @PostMapping(value = "edit/{assignmentId}")
+    @PostMapping(value = "/{assignmentId}")
     public String processEditForm(@ModelAttribute @Valid Assignments assignments, Model model) {
 
 
@@ -91,6 +82,7 @@ public class AssignmentsController {
     public String displayCompletePage(Model model) {
 
         model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classes", classesDao.findAll());
         return "assignments/complete";
     }
 

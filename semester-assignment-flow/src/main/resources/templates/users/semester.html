@@ -10,9 +10,10 @@
 
 
 <form method = "post" th:action="@{/semester}" class ="myform" th:object="${user}">
-    <h1 > Register!</h1>
+    <h1 style="color:black; margin-left:75px"> Set Semester!</h1>
 
-    <p> <b>Name: </b><input type="text"  class="myinput" th:field="*{semester}" placeholder="Fall 2019"/></p>
+    <label style="color:black"> <b>Semester: </b></label>
+    <input type="text"  class="myinput" th:field="*{semester}" placeholder="Fall 2019"/>
 
 
     <input type="submit" value="Set Semester!" class="mybutton"/>

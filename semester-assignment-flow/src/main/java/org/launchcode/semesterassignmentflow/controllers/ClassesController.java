@@ -28,19 +28,13 @@ public class ClassesController {
     @Autowired
     UsersDao usersDao;
 
-    @GetMapping(value = "/")
-    public String displayAddClasses(Model model) {
-
-
-        return "/classes/classes";
-    }
-
 
 
     @GetMapping(value = "/add")
     public String displayAddClassForm(Model model) {
         model.addAttribute("title", "Fall 2019");
-        model.addAttribute("classes", new Classes());
+        model.addAttribute("classes", classesDao.findAll());
+        model.addAttribute("class", new Classes());
 
 
         return "/classes/add";
@@ -49,10 +43,12 @@ public class ClassesController {
     @PostMapping(value = "/add")
     public String processAddClassForm(@ModelAttribute @Valid Classes classes, Model model, Errors errors) {
         model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classes", classesDao.findAll());
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Fall 2019");
-            model.addAttribute("classes", new Classes());
+            model.addAttribute("classes", classesDao.findAll());
+            model.addAttribute("class", new Classes());
             return "/classes/add";
         }
 
@@ -85,8 +81,9 @@ public class ClassesController {
     public String newclass(Model model, @PathVariable int classId) {
 
         Classes classes = classesDao.findOne(classId);
-        List<Assignments> assignments = classes.getAssignments();
+
         model.addAttribute("classname", classes.getName());
+        model.addAttribute("classes", classesDao.findAll());
         model.addAttribute("title", "Fall 2019");
         model.addAttribute("assignments", assignmentsDao.findAll());
 
@@ -101,6 +98,7 @@ public class ClassesController {
     public String displayEditForm(Model model, @PathVariable int classId, @ModelAttribute Classes classes) {
 
         model.addAttribute("class", new Classes());
+        model.addAttribute("classes", classesDao.findAll());
         model.addAttribute("title", "Edit Cheese " + classes.getName() + " (id=" + classes.getClassId() + ")");
         return "classes/edit";
     }
@@ -109,6 +107,6 @@ public class ClassesController {
     public String processEditForm(@ModelAttribute @Valid Classes classes, Model model) {
 
 
-        return "redirect:/cheese";
+        return "redirect:/";
     }
 }

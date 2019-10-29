@@ -27,7 +27,7 @@
                     <a th:href="@{/signin}" > Sign In </a>
                     <a th:href="@{/register}"> Register </a>
                 </div >
-                    <ul th:each="class : ${classes}" style="display:inline-block; list-style:none">
+                    <ul th:each="class : ${classes}"  style="display:inline-block; list-style:none">
                         <li> <a href="#" th:href="@{${'/class/' + class.classId}}" th:text="${class.name}" >  </a></li>
                     </ul>
 

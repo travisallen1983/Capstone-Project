@@ -36,9 +36,9 @@
                     <input name = "ids" type="submit" value = "Remove" th:id="${assignment.assignmentId}"/>
 
             </form>-->
-            <button><a th:href="@{/assignments/remove}">Remove</a></button>
+            <button><a th:href="@{/}">Remove</a></button>
             <button><a th:href="@{/assignments/complete}">Complete</a></button>
-            <button><a th:href="@{/assignments/edit}">Edit</a></button>
+            <button><a <!--th:href="@{${'/assignment/' + assignments.assignmentId}}"-->>Edit</a></button>
 
         </td>
         <span style="color:white;">---------------------------------------------------------------------------------</span>

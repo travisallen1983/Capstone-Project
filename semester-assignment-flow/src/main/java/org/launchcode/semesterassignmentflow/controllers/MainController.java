@@ -32,19 +32,25 @@ public class MainController {
         model.addAttribute("classes", classesDao.findAll());
         model.addAttribute("assignments", assignmentsDao.findAll());
 
-            //, @RequestParam int[] ids
-            //for (int id : ids) {
-            //    assignmentsDao.deleteById(id);
-            //}
-           //return  "redirect:/";
 
         return "home";
+    }
+
+    @PostMapping(value = "/")
+    public String processRemoveAssignment( @RequestParam int[] ids){
+
+        for (int id : ids) {
+            assignmentsDao.deleteById(id);
+        }
+
+        return  "redirect:/";
     }
 
 
     @GetMapping(value = "/signin")
     public String displayLoginForm(Model model) {
         model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classes", classesDao.findAll());
         model.addAttribute("user", new User());
 
 
@@ -57,10 +63,12 @@ public class MainController {
     @PostMapping(value = "/signin")
     public String processLoginForm(@ModelAttribute @Valid User user, Model model, Errors errors) {
         model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classes", classesDao.findAll());
 
         if(errors.hasErrors()) {
 
             model.addAttribute("title", "Fall 2019");
+            model.addAttribute("classes", classesDao.findAll());
             model.addAttribute("user", new User());
 
             return "/users/signin";
@@ -73,6 +81,7 @@ public class MainController {
     @GetMapping(value = "/register")
     public String displayRegisterForm(Model model) {
         model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classes", classesDao.findAll());
         model.addAttribute("user", new User());
 
 
@@ -85,10 +94,12 @@ public class MainController {
     @PostMapping(value = "/register")
     public String processRegisterForm(@ModelAttribute @Valid User user, Model model, Errors errors) {
         model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classes", classesDao.findAll());
 
         if(errors.hasErrors()) {
 
             model.addAttribute("title", "Fall 2019");
+            model.addAttribute("classes", classesDao.findAll());
             model.addAttribute("user", new User());
 
             return "/users/register";
@@ -103,6 +114,7 @@ public class MainController {
     @GetMapping(value = "/semester")
     public String displaySemesterForm(Model model) {
         model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classes", classesDao.findAll());
         model.addAttribute("user", new User());
 
 
