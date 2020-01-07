@@ -87,6 +87,25 @@ public class AssignmentsController {
     }
 
 
+    @GetMapping(value= "/remove")
+    public String displayRemoveAssignmentsPage(Model model){
+        model.addAttribute("title", "Fall 2019");
+        model.addAttribute("classname", "Remove Assignments");
+        model.addAttribute("classes", classesDao.findAll());
+        model.addAttribute("assignments", assignmentsDao.findAll());
+        return "/assignments/remove";
+
+    }
+
+    @PostMapping(value = "/remove")
+    public String processRemoveAssignmentsForm(@RequestParam int[] ids) {
+
+        for (int id : ids) {
+            assignmentsDao.deleteById(id);
+        }
+        return  "redirect:/";
+    }
+
 
 
 }

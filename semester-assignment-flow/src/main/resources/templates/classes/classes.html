@@ -2,50 +2,53 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="mybody">
+<body class="bg-dark">
 
 <header th:replace="fragments :: header"></header>
 
 <h1 th:text="${classname}"></h1>
 
+    <table>
+        <tbody th:each="assignment: ${assignments}">
+            <div th:if = "${classname == assignment.course}">
 
-<div class= "coursetable" >
+                    <td>
 
-    <table >
-        <tr th:each="assignment: ${assignments}">
-            <span th:if = "${classname == assignment.course}">
-            <span style="color:white;">---------------------------------------------------------------------------------</span>
-            <td style="color:blue;"> Class: </td>
-            <td th:text="${assignment.course}"> </td>
-            <td></td>
-            <td></td>
-            <td style="color:blue;"> Type: </td>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-dark dropdown-toggle transparentbar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Drop</button>
+
+                    <div class="dropdown-menu" >
+                        <a class="dropdown-item" th:href="@{/assignments/remove}">Remove</a>
+                        <a class="dropdown-item" th:href="@{/assignments/complete}">Complete</a>
+                        <a class="dropdown-item" th:href="@{/assignments/edit}">Edit</a>
+                    </div>
+                </div>
+                    </td>
+                     <div>
+                    <th class="text-info"> Class: </th>
+                    <td th:text="${assignment.course}"> </td>
+                </div>
+           <div>
+
+            <th class="text-info"> Type: </th>
             <td th:text="${assignment.type}"> </td>
-            <td></td>
-            <td></td>
-            <td style="color:blue;"> Details: </td>
+               </div>
+            <div>
+            <th class="text-info"> Details: </th>
             <td th:text="${assignment.details}"> </td>
-            <td></td>
-            <td></td>
-            <td style="color:blue; "> Due Date: </td>
+            </div>
+
+            <div>
+            <th class="text-info"> Due Date: </th>
             <td th:text="${assignment.due}"> </td>
-            <td>
-
-                <button><a th:href="@{/assignments/complete}">Complete</a></button>
-                <button><a th:href="@{/}">Remove</a></button>
-                <button><a th:href="@{/assignments/edit}">Edit</a></button>
-
-            </td>
-            <span style="color:white;">---------------------------------------------------------------------------------</span>
-            </span>
-            </br>
-
-        </tr>
 
 
-
+            </div>
+            </div>
+        </tbody>
     </table>
-</div>
+
 
 <footer th:replace="fragments :: footer">
 

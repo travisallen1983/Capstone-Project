@@ -2,54 +2,61 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="mybody">
+<body class="bg-dark">
 
 <header th:replace="fragments :: header"></header>
 
-<h1>All Assignments.</h1>
+<table>
 
-
-<div class= "coursetable">
-<table th:each="class: ${classes}" >
-
-
-</table>
-<table th:each="assignment: ${assignments}">
+<thead><h1>All Assignments</h1></thead>
+<tbody th:each="assignment: ${assignments}">
     <tr>
-        <span style="color:white;">---------------------------------------------------------------------------------</span>
-        <td style="color:blue;"> Class: </td>
+        <td>
+            <div class="btn-group">
+                <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Drop</button>
+
+                <div class="dropdown-menu" >
+                    <a class="dropdown-item" th:href="@{/assignments/remove}">Remove</a>
+                    <a class="dropdown-item" th:href="@{/assignments/complete}">Complete</a>
+                    <a class="dropdown-item" th:href="@{/assignments/edit}">Edit</a>
+                </div>
+            </div>
+
+
+        </td>
+        <th class="text-info"> Class: </th>
         <td th:text="${assignment.course}"> </td>
-        <td></td>
-        <td></td>
-        <td style="color:blue;"> Type: </td>
+        </td>
+        <div>
+        <th class="text-info"> Type: </th>
         <td th:text="${assignment.type}"> </td>
-        <td></td>
-        <td></td>
-        <td style="color:blue;"> Details: </td>
+        </div>
+        <div>
+        <th class="text-info"> Details: </th>
         <td th:text="${assignment.details}"> </td>
-        <td></td>
-        <td></td>
-        <td style="color:blue; "> Due Date: </td>
+        </div>
+        <div>
+        <th class="text-info"> Due Date: </th>
         <td th:text="${assignment.due}"> </td>
         <td>
            <!-- <form method = "post" class="myform" th:each = "assignment : ${assignments}" >
                     <input name = "ids" type="submit" value = "Remove" th:id="${assignment.assignmentId}"/>
 
             </form>-->
-            <button><a th:href="@{/}">Remove</a></button>
-            <button><a th:href="@{/assignments/complete}">Complete</a></button>
-            <button><a <!--th:href="@{${'/assignment/' + assignments.assignmentId}}"-->>Edit</a></button>
 
+            <!--th:href="@{${'/assignment/' + assignments.assignmentId}}"-->
         </td>
-        <span style="color:white;">---------------------------------------------------------------------------------</span>
-        </br>
+
+        </div>
 
     </tr>
+</tbody>
 
 
 
 </table>
-</div>
+
 
 <footer th:replace="fragments :: footer">
 

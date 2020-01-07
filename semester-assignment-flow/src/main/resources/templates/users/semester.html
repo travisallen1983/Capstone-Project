@@ -2,24 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="mybody">
+<body class="bg-dark">
 
 <header th:replace="fragments :: header"></header>
 
 
-
-
-<form method = "post" th:action="@{/semester}" class ="myform" th:object="${user}">
+<form method = "post" th:action="@{/semester}" class ="myform-container bg-info rounded" th:object="${user}">
     <h1 style="color:black; margin-left:75px"> Set Semester!</h1>
-
     <label style="color:black"> <b>Semester: </b></label>
     <input type="text"  class="myinput" th:field="*{semester}" placeholder="Fall 2019"/>
-
-
     <input type="submit" value="Set Semester!" class="mybutton"/>
 </form>
 
-
-
 </body>
+
 </html>

@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="mybody">
+<body class="bg-dark">
 
 <header th:replace="fragments :: header"></header>
 
 
 
 
-<form method = "post" th:action="@{/register}" class ="myform" th:object="${user}">
+<form method = "post" th:action="@{/register}" class ="myform-container bg-info rounded border-white" th:object="${user}">
     <h1 style="color:black; margin-left:100px"> Register!</h1>
 
     <label style="color:black"> <b>Name: </b></label>

@@ -2,44 +2,49 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="mybody">
+<body class="bg-dark">
 
 <header th:replace="fragments :: header"></header>
 
+<form method = "post" th:action="@{/assignments/add}" th:object="${assignments}">
+    <div class="myform-container bg-info rounded">
+    <div class="form-group">
+        <h1 style="color:white; text-align:center; border-bottom:solid 2px white">Assignments </h1>
+        <div >
+            <label for="course" class="m-0 p-0"> Class
+            <input class="form-control" type="text" id="course"  th:field="*{course}" placeholder="i.e. History 101"/></label>
+            <span th:errors="*{course}" class="errors"></span>
+        </div>
+        <br>
+        <div class="form-control">
+            <label>Assignment Type</label>
+            <select  th:field="*{type}">
+                <option value="Pick One">Pick One</option>
+                <option value="Weekly Assignment">Weekly Assignment</option>
+                <option value="Quiz">Quiz</option>
+                <option value="Test">Test</option>
+                <option value="Paper">Paper</option>
+            </select>
+            <span th:errors="*{type}" class="errors"></span>
+        </div>
+        <br>
+        <div>
+            <label class="m-0 p-0">Assignment Details</label>
+            <input type="text"  class="form-control" th:field="*{details}" placeholder="i.e. Read Chapter 1"/>
+            <span th:errors="*{details}" class="errors"></span>
+        </div>
+        <br>
+        <div>
+            <label class="m-0 p-0">Due Date</label>
+            <input type="text" class="form-control" th:field="*{due}" placeholder=" i.e. 01/01/2020"/>
+            <span th:errors="*{due}" class="errors"></span>
+        </div>
+        <br>
 
 
-
-<form method = "post" th:action="@{/assignments/add}"class ="myform" th:object="${assignments}">
-
-    <h1 style="color:black; margin-left:50px">Add Assignment!</h1>
-
-    <label style="color:black"> <b>Class: </b></label>
-        <input type="text"  class="myinput" th:field="*{course}" placeholder=" i.e. History 101"/>
-    <span th:errors="*{course}" class="errors"></span>
-
-    <label style="color:black"> <b>Assignment Type:</b> </label>
-        <select class="myinput" th:field="*{type}">
-        <option value="Pick One">Pick One</option>
-        <option value="Weekly Assignment">Weekly Assignment</option>
-        <option value="Quiz">Quiz</option>
-        <option value="Test">Test</option>
-        <option value="Paper">Paper</option>
-    </select>
-    <span th:errors="*{type}" class="errors"></span>
-    <p></p>
-    <label style="color:black"> <b>Details: </b></label>
-        <input type="text"  class="myinput" th:field="*{details}" placeholder="i.e. Read Chapter 1"/>
-    <span th:errors="*{details}" class="errors"></span>
-
-    <label style="color:black"> <b> Due Date:</b></label>
-        <input type="text"  class="myinput" th:field="*{due}" placeholder=" i.e. 01/01/2020"/>
-    <span th:errors="*{due}" class="errors"></span>
-
-
-
-    <input type="submit" value="Add Assignment" class="mybutton"/>
-
-
+        <input type="submit" value="Add Assignment" class="mybutton"/>
+    </div>
+    </div>
 </form>
 </body>
 </html>

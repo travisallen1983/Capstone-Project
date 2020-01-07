@@ -99,7 +99,7 @@ public class ClassesController {
 
         model.addAttribute("class", new Classes());
         model.addAttribute("classes", classesDao.findAll());
-        model.addAttribute("title", "Edit Cheese " + classes.getName() + " (id=" + classes.getClassId() + ")");
+        model.addAttribute("title", "Edit " + classes.getName() + " (id=" + classes.getClassId() + ")");
         return "classes/edit";
     }
 

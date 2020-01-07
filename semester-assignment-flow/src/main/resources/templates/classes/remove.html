@@ -2,15 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="mybody">
+<body class="bg-dark">
 
 <header th:replace="fragments :: header"></header>
 
 <h1 th:text="${classname}"></h1>
-<form method = "post" class="myform" >
+<form method = "post" >
     <div th:each = "class : ${classes}" class = "checkbox">
         <input type = "checkbox" name = "ids" th:value="${class.classId}" th:id="${class.classId}" />
-        <label th:for="${class.classId}" th:text="${class.name + '(' + class.number} + ')'"></label>
+        <label th:for="${class.classId}" style="color:white;" th:text="${class.name + '(' + class.description} + ')'"></label>
         <br />
     </div>
     <input type ="submit" value = "Remove Class"/>
